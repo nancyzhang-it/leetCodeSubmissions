@@ -1,0 +1,21 @@
+public int findCelebrity(int n) {
+		// Loop through all to find the candidate
+		int candidate = 0;
+		for(int i=1; i<n; i++) {
+			if(knows(candidate, i)) {
+				candidate = i;
+			}
+		}
+		// Make sure the celebrity is a celebrity
+		for(int i=0; i<n; i++) {
+			// If the i = celebrity, we check the next
+			if(i == candidate) {
+				continue;
+			}
+			
+			if(knows(candidate, i) || !knows(i, candidate)) {
+				return -1;
+			}
+		}
+		return candidate;
+	}
